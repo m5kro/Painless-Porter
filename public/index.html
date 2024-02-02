@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Node.js File Upload</title>
+</head>
+<body>
+  <form action="/submit" method="post" enctype="multipart/form-data">
+    <label for="file">File:</label>
+    <input type="file" name="file" id="file"><br>
+
+    <label for="fileName">File Name:</label>
+    <input type="text" name="fileName" id="fileName"><br>
+
+    <label for="code">Code:</label>
+    <input type="text" name="code" id="code"><br>
+
+    <input type="checkbox" name="no-upload" id="no-upload">
+    <label for="no-upload">No Upload</label><br>
+
+    <input type="checkbox" name="no-compress" id="no-compress">
+    <label for="no-compress">No Compress</label><br>
+
+    <input type="checkbox" name="no-cleanup" id="no-cleanup">
+    <label for="no-cleanup">No Cleanup</label><br>
+
+    <input type="submit" value="Submit">
+  </form>
+
+  <div id="loading" style="display: none;">Loading...</div>
+  <div id="completed" style="display: none;">Completed!</div>
+
+  <script>
+    // Periodically request and display file contents
+    function updateFileContents() {
+      fetch('/porter/pixeldrain.txt')
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById('pixeldrain').innerText = data;
+        });
+
+      fetch('/porter/gofile.txt')
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById('gofile').innerText = data;
+        });
+    }
+
+    setInterval(updateFileContents, 5000);  // Adjust interval as needed
+  </script>
+</body>
+</html>
