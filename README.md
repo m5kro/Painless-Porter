@@ -16,6 +16,7 @@ Prerequisites: Docker
 
 # Credits
 nwjs team for nwjs <br>
+adlerosn for cicpoffs <br>
 docker team for docker <br>
 pixeldrain for free api and file hosting<br>
 gofile for free api and file hosting<br>
